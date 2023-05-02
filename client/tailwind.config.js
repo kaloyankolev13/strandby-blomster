@@ -3,7 +3,7 @@ module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     screens: {
-      sm: '330px',
+      sm: '630px',
       md: '768px',
       lg: '1000px',
       xl: '1300px',
@@ -11,7 +11,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#0A0A0A',
+        primary: '#BECCA5',
         accent: '#AA9454',
       },
     },
