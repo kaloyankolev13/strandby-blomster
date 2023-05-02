@@ -92,5 +92,6 @@ const navigation = [
   { name: "Contact us", href: "#" },
 ];
 
+
 const mobileMenuOpen = ref(false);
 </script>

@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <div class='container mx-auto flex'>
+    <section class=''>
+        <div class='container mx-auto flex '>
             <div id='hero-image' class='w-1/2'>
                 <h1>Image</h1>
             </div>
