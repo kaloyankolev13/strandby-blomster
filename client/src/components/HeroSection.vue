@@ -4,10 +4,11 @@
             <div id='hero-image' class='w-1/2'>
                 <img src="../assets/hero-png.png" alt="" class='object-fill object-left scale-175 rotate-30 ml-32 mt-60'>
             </div>
-            <div id='hero-text' class='w-[600px] text-center self-center'>
+            <div id='hero-text' class='w-[600px] p-10 text-right self-center'>
                 <h3 class='text-right text-xl text-accent'>{{ event.date }}</h3>
-                <h1 class='text-6xl text-accent'>{{ event.name }}</h1>
-                <h1 class='text-2xl text-accent'>{{ event.description }}</h1>
+                <h1 class='text-6xl text-center text-accent'>{{ event.name }}</h1>
+                <h1 class='text-2xl text-center text-accent mb-10'>{{ event.description }}</h1>
+                <button class='btn text-lg'>Order now</button>
             </div>
         </div>
 </section>
