@@ -12,7 +12,14 @@ module.exports = {
     extend: {
       colors: {
         primary: '#BECCA5',
-        accent: '#AA9454',
+        accent: '#5D713B',
+      },
+      rotate: {
+        30: '30deg',
+      },
+
+      scale: {
+        175: '1.75',
       },
     },
   },
