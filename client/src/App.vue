@@ -1,6 +1,6 @@
 <template>
   <NavigationBar />
-  <router-view class='h-screen' />
+  <router-view />
   <FooterBar />
 </template>
 

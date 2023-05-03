@@ -1,25 +1,25 @@
 <template>
-    <div class='flex justify-evenly h-64 mt-20'>
-        <div id='internal-links'>
-            <div v-for='link in navigation' :key='link.name' class='my-5'>
+    <footer class='flex  mt-20 pt-10'>
+        <div id='internal-links' class='w-1/3 flex flex-col items-center '>
+            <div v-for='link in navigation' :key='link.name' class='my-5 text-accent font-extrabold'>
             <a :href="link.href">
                 {{ link.name }}
             </a>
         </div>
     </div>
-        <div id='newsletter' class='text-center'>
+        <div id='newsletter' class='text-center w-1/3'>
             <h3 class='text-5xl mb-4'>Stay Updated</h3>
             <label for="email">
-                <input class='w-96 h-8 border-2 border-primary rounded-xl' type="text" placeholder='Email address'>
+                <input class='w-96 h-8 border-2 border-accent rounded-xl' type="text" placeholder='Email address'>
             </label>
             <br>
-            <button class='mt-3 w-96 bg-primary h-8 rounded-xl'>Subscribe to newsletter</button>
+            <button class='mt-3 w-96 bg-accent text-white h-8 rounded-xl'>Subscribe to newsletter</button>
         </div>
-        <div id='social-links' class='my-auto'>
+        <div id='social-links' class='my-auto w-1/3 flex justify-center'>
             <a href="">Facebook</a>
             <a href="">Instagram</a>
         </div>
-    </div>
+    </footer>
 </template>
 
 <script setup>
@@ -34,6 +34,11 @@ const navigation = [
 
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+footer{
+    background-image: url("../assets/footer.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
 </style>
