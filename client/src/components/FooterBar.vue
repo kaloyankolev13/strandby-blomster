@@ -1,5 +1,5 @@
 <template>
-    <div class='flex justify-evenly h-64 border'>
+    <div class='flex justify-evenly h-64 mt-20'>
         <div id='internal-links'>
             <div v-for='link in navigation' :key='link.name' class='my-5'>
             <a :href="link.href">
