@@ -1,5 +1,5 @@
 <template>
-    <footer class='flex  mt-20 pt-10'>
+    <footer class='flex pt-10'>
         <div id='internal-links' class='w-1/3 flex flex-col items-center '>
             <div v-for='link in navigation' :key='link.name' class='my-5 text-accent font-extrabold'>
             <a :href="link.href">

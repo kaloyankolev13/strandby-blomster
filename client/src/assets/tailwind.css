@@ -2,17 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn {
+.btn-light {
   background-color: white;
   border-radius: 20px;
-  width: 140px;
-  height: 40px;
+  padding: 5px 20px;
   font-weight: 600;
   /* Border */
   border: 1px solid black;
 }
 
-.btn:hover {
+.btn-dark {
+  background-color: #becca5;
+  border-radius: 20px;
+  padding: 5px 20px;
+  font-weight: 600;
+  /* Border */
+  border: 1px solid black;
+}
+
+.btn-light:hover {
   background-color: #becca5;
 }
 
@@ -24,4 +32,10 @@
 
   background-repeat: no-repeat;
   background-size: 20px 20px;
+}
+
+#euroflorist-banner {
+  background-image: url(../assets/euroflorist-banner.jpeg);
+  background-size: cover;
+  background-position: center;
 }

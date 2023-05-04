@@ -11,7 +11,7 @@
             </div>
             <img src="../assets/frontpage-accent2.png" class='absolute -left-32 -bottom-[900px] rotate-90'  width='500' alt="">
         </div>
-        <a href="#" class='btn px-4 py-2'>Show more</a>
+        <a href="#" class='btn-light px-4 py-2'>Show more</a>
     </div>
 
 </template>
@@ -19,9 +19,9 @@
 <script setup>
 
 const bestProducts = [
-    {name:'name1' , imgUrl:'url1',desc:'desc1',price:'100kr1'},
-    {name:'name2' , imgUrl:'url2',desc:'desc2',price:'100kr2'},
-    {name:'name3' , imgUrl:'url3',desc:'desc3',price:'100kr3'},
+    {name:'name1' , imgUrl:'#',desc:'desc1',price:'100kr1'},
+    {name:'name2' , imgUrl:'#',desc:'desc2',price:'100kr2'},
+    {name:'name3' , imgUrl:'#',desc:'desc3',price:'100kr3'},
 ]
 
 </script>
