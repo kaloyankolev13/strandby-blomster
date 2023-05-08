@@ -1,5 +1,5 @@
 <template>
-    <img src="../assets/frontpage-accent1.png" class='rotate-45 absolute -right-20 -bottom-96'  width='500' alt="">
+    <img src="../../assets/frontpage-accent1.png" class='rotate-45 absolute -right-20 -bottom-96'  width='500' alt="">
     <div class='text-center'>
         <h1 class='text-center mt-10 text-4xl '>Best Sellers</h1>
         <div id='bestseller-products' class='flex justify-center'>
@@ -9,7 +9,7 @@
                 <p class='text-xl'>{{ product.desc }}</p>
                 <p class='text-xl'>{{ product.price }}</p>
             </div>
-            <img src="../assets/frontpage-accent2.png" class='absolute -left-32 -bottom-[900px] rotate-90'  width='500' alt="">
+            <img src="../../assets/frontpage-accent2.png" class='absolute -left-32 -bottom-[900px] rotate-90'  width='500' alt="">
         </div>
         <a href="#" class='btn-light px-4 py-2'>Show more</a>
     </div>

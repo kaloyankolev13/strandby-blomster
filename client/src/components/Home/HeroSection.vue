@@ -2,7 +2,7 @@
     <section class=''>
         <div class='container mx-auto flex '>
             <div id='hero-image' class='w-1/2'>
-                <img src="../assets/hero-png.png" alt="" class='object-fill object-left scale-175 rotate-30 ml-32 mt-60'>
+                <img src="../../assets/hero-png.png" alt="" class='object-fill object-left scale-175 rotate-30 ml-32 mt-60'>
             </div>
             <div id='hero-text' class='w-[600px] p-10 text-right self-center'>
                 <h3 class='text-right text-xl text-accent'>{{ event.date }}</h3>
