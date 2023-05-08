@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <HeroSection />
-    <div class='bg-facebook text-white'>
+    <div class='bg-dark text-white'>
     <div id='review' class='flex justify-evenly py-20'>
       <div id='review-rating' class='flex items-center text-3xl'>
         <span id='svg' class='mr-3'>

@@ -13,7 +13,8 @@ module.exports = {
       colors: {
         primary: '#BECCA5',
         accent: '#5D713B',
-        facebook: '#2E305C',
+        dark: '#333',
+        pink: '#E2C9DB',
       },
       rotate: {
         30: '30deg',

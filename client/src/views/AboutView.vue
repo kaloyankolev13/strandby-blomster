@@ -1,7 +1,7 @@
 <template>
   <div>
     <Location/>
-    <div id='info' class='flex justify-around mt-10'>
+    <div id='info' class='flex justify-around py-14 bg-pink'>
       <div id='contact'>
       <h1 class='text-4xl mb-5'>Contact info</h1>
       <div class='text-accent'>
@@ -18,7 +18,7 @@
       </div>
     </div>
     </div>
-    <div id='euroflorist-banner' class='h-96 mt-28 flex justify-around text-center items-center'>
+    <!-- <div id='euroflorist-banner' class='h-96 mt-28 flex justify-around text-center items-center'>
       <div id='text'>
         <h3 class=' text-3xl'>We use Europe's #1 flower delivery service</h3>
       </div>
@@ -26,7 +26,7 @@
         <img src="../assets/euroflorist.png" width='200' alt="">
         <a href='https://www.euroflorist.dk/' class='btn-dark'>Read More</a>
       </div>
-    </div>
+    </div> -->
     <div class='flex justify-around items-center text-accent my-20'>
       <div>
         <img src="../assets/aboutus-fill.png" width='600' alt="">
