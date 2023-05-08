@@ -89,7 +89,6 @@ const navigation = [
   { name: "About Us", href: "/about" },
   { name: "Flowers", href: "/products" },
   { name: "Help", href: "#" },
-  { name: "Contact us", href: "#" },
 ];
 
 
