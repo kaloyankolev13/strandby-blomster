@@ -32,5 +32,5 @@
 <script setup>
 // @ is an alias to /src
 import HeroSection from "@/components/Home/HeroSection.vue";
-import HomeProducts from "@/components/Home/HomeProducts.vue";
+import HomeProducts from "@/components/BestSellers.vue";
 </script>

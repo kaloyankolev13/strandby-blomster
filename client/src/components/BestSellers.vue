@@ -1,17 +1,4 @@
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
--->
+
 <template>
   <div class="bg-white">
     <div
@@ -61,7 +48,7 @@
 </template>
 
 <script setup>
-import Product1 from "../assets/product_photo_i_want_you.png";
+import Product1 from "@/assets/product_photo_i_want_you.jpeg";
 
 const products = [
   {
