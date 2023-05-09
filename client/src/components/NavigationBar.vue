@@ -6,7 +6,7 @@
     >
       <router-link to="/" class="-m-1.5 p-1.5">
         <span class="sr-only">Strandby Blomster</span>
-        <img class="lg:h-10 h-7 w-auto" src="../assets/logo.png" alt="" />
+        <img class="lg:h-10 h-7 w-auto" src="../assets/logo.png" alt="strandbyblomster" />
       </router-link>
       <div class="flex lg:hidden">
         <button

@@ -1,16 +1,17 @@
 <template>
-    <div class='h-[600px] bg-primary'>
+    <!-- <div class='h-[600px] bg-primary'>
         <h1 class='text-3xl'>Categories</h1>
-    </div>
+    </div> -->
     <div class='container mx-auto m-10'>
         <h1 class='text-3xl'>Products</h1>
-        <div class='flex justify-center'>
-        <div v-for='product in products' :key='product.name' class='mx-10 bg-primary h-60 w-60 px-4'>
-            <div class='h-40'> {{ product.image }}</div>
-            <h2>{{product.name}}</h2>
+        <div class=' grid grid-cols-3 place-items-center'>
+            <div v-for='product in products' :key='product.name' class='m-10 bg-primary h-60 w-60 px-4 '>
+                <router-link :to="{ name: 'product', params: { id: product.id } }" >
+                <div class='h-40'> {{ product.image }}</div>
+                <h2>{{product.name}}</h2>
             <p>{{product.description}}</p>
             <p>{{product.price}}</p>
-            <router-link :to="{ name: 'product', params: { id: product.id } }" >Hello</router-link>
+        </router-link>
         </div>
     </div>
     </div>
@@ -35,7 +36,8 @@ const products = ref([
         price:30,
         image:'url'
 
-    },    {
+    },
+    {
         id:3,
         name:'flower3',
         description:'Some description',
@@ -43,6 +45,23 @@ const products = ref([
         image:'url'
 
     },
+    {
+        id:3,
+        name:'flower3',
+        description:'Some description',
+        price:30,
+        image:'url'
+
+    },
+    {
+        id:3,
+        name:'flower3',
+        description:'Some description',
+        price:30,
+        image:'url'
+
+    },
+    
 ])
 
 </script>
