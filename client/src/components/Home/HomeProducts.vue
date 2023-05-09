@@ -11,7 +11,7 @@
             </div>
             <img src="../../assets/frontpage-accent2.png" class='absolute -left-32 -bottom-[900px] rotate-90'  width='500' alt="">
         </div>
-        <a href="#" class='btn-light px-4 py-2'>Show more</a>
+        <a href="#" class='btn-light rounded-md'>Show more</a>
     </div>
 
 </template>
