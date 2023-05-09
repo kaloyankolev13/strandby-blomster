@@ -36,6 +36,11 @@
           </Disclosure>
         </dl>
       </div>
+      <div class='text-center pt-20'>
+      <p class='mb-10'>Do you have more questions? Do not hesitate to call or email us. We'll be happy to help you!</p>
+      <p class='font-bold'>75 13 82 23 </p>
+      <p class='font-bold underline'>strandby27@live.dk</p>
+    </div>
     </div>
   </div>
 </template>
@@ -46,10 +51,19 @@ import { MinusSmallIcon, PlusSmallIcon } from "@heroicons/vue/24/outline";
 
 const faqs = [
   {
-    question: "What's the best thing about Switzerland?",
+    question: "What is the difference between bouquet size and price groups?",
     answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+      "here are 3 different price categories for most of our bouquets. Size varies with price, and includes more or fewer flowers. The image most often represents medium. The exact number of flowers may vary depending on the season and daily changes in prices at the florist, but we guarantee that the colour, shape and amount are always correct!",
   },
+  {
+    question:"Do you deliver flowers on Sundays and public holidays?",
+    answer:"We cannot guarantee delivery on Sundays and public holidays. In most major cities, however, there are a few shops that are open and can deliver on Sundays. For special holidays and anniversaries such as Mother's Day, most flower shops are open and can deliver."
+  },
+  {
+    question:"I can’t log in to my personal account?",
+    answer:"Check that you have filled in correct information. Otherwise, contact us and we will check your account."
+  },
+  
   // More questions...
 ];
 </script>
