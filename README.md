@@ -1,2 +1,3 @@
 # strandby-blomster
-Final project for Mulrimedia Design education
+
+Final project for Multimedia Design education
