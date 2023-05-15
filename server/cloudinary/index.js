@@ -10,11 +10,10 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: 'BulgarianLegacy',
+    folder: 'StrandByBlomster',
     allowedFormats: ['jpeg', 'png', 'jpg', 'webp'],
   },
 });
-
 
 module.exports = {
   cloudinary,
