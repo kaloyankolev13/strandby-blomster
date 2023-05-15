@@ -1,30 +1,57 @@
-<template>
-  <!-- <div class='h-[600px] bg-primary'>
-        <h1 class='text-3xl'>Categories</h1>
-    </div> -->
-  <div class="container mx-auto m-10">
-    <h1 class="text-3xl">Products</h1>
-    <div class="grid grid-cols-3 place-items-center">
-      <div
-        v-for="product in products"
-        :key="product.name"
-        class="m-10 bg-primary h-60 w-60 px-4"
-      >
-        <router-link :to="{ name: 'product', params: { id: product.id } }">
-          <div class="h-40">{{ product.image }}</div>
-          <h2>{{ product.name }}</h2>
-          <p>{{ product.description }}</p>
-          <p>{{ product.price }}</p>
-        </router-link>
-      </div>
 
-      <p>{{ state.products }}</p>
+<template>
+  <div class="bg-white">
+    <div
+      class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8"
+    >
+      <h2 class="text-2xl font-bold tracking-tight text-gray-900">
+        Best Sellers
+      </h2>
+
+      <div
+        class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8"
+      >
+        <div
+          v-for="product in state.products"
+          :key="product.id"
+          class="group relative shadow-md rounded-md"
+        >
+          <div
+            class="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-b-none rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80"
+          >
+            <img
+              :src="product.imageSrc"
+              :alt="product.imageAlt"
+              class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+            />
+          </div>
+          <div class="flex p-3 flex-col items-center">
+            <div class="flex items-center flex-col">
+              <h3 class="text-lg font-bold text-[#333]">
+                <a :href="product.href">
+                  <span aria-hidden="true" class="absolute inset-0" />
+                  {{ product.name }}
+                </a>
+              </h3>
+              <p class="mt-1 text-sm text-center text-gray-500">
+                {{ product.description }}
+              </p>
+              <p class="mt-1 text-sm font-bold text-[#333]">
+                {{ product.price }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
+
+
 <script setup>
-import { ref, onMounted } from "vue";
+// import Product1 from "@/assets/product_photo_i_want_you.jpeg";
+import {  onMounted } from "vue";
 import Products from "../api/products";
 
 const {
@@ -45,43 +72,7 @@ onMounted(async () => {
   await fetchProducts(); //Add limit and skip as the parameters
 });
 
-const products = ref([
-  {
-    id: 1,
-    name: "flower1",
-    description: "Some description",
-    price: 30,
-    image: "url",
-  },
-  {
-    id: 2,
-    name: "flower2",
-    description: "Some description",
-    price: 30,
-    image: "url",
-  },
-  {
-    id: 3,
-    name: "flower3",
-    description: "Some description",
-    price: 30,
-    image: "url",
-  },
-  {
-    id: 3,
-    name: "flower3",
-    description: "Some description",
-    price: 30,
-    image: "url",
-  },
-  {
-    id: 3,
-    name: "flower3",
-    description: "Some description",
-    price: 30,
-    image: "url",
-  },
-]);
+
 </script>
 
 <style lang="scss" scoped></style>
