@@ -6,22 +6,21 @@ const state = ref({
   product: {},
   products: [],
   message: '',
-  limit: 9,
+  limit: 3,
 });
 const Products = () => {
   // Gets all the products from the database
-  const fetchProducts = async () => {
+  const fetchProducts = async (limit, skip) => {
     let url = '/products';
-    // if (limit) {
-    //   url += `?limit=${limit.value}`;
-    // } else {
-    //   // If no limit is passed fallback to default value
-    //   url += `?limit=${process.env.MAX_PRODUCTS_PER_PAGE || 9}`;
-    // }
-    // if (skip) {
-    //   url += `&skip=${skip.value}`;
-    // }
-    // console.log('limit and skip', limit.value, skip.value);
+    if (limit) {
+      url += `?limit=${limit.value}`;
+    } else {
+      // If no limit is passed fallback to default value
+      url += `?limit=${state.value.limit}`;
+    }
+    if (skip) {
+      url += `&skip=${skip.value}`;
+    }
     await axiosInstance.get(url).then((res) => {
       // {
       //   total: 10,

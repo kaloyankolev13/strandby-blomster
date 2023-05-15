@@ -16,15 +16,19 @@
           :key="product.id"
           class="group relative shadow-md rounded-md"
         >
+        <router-link
+    :to="{ name: 'product', params: { id: product._id } }"
+    >
           <div
             class="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-b-none rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80"
           >
-            <img
-              :src="product.imageSrc"
-              :alt="product.imageAlt"
-              class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-            />
+          <div v-if='product.images.length === 0'>
+              <h1>No Image</h1>
           </div>
+            <img v-else class='w-52 mb-12' :src=product.images[0].url alt="">
+        
+          </div>
+
           <div class="flex p-3 flex-col items-center">
             <div class="flex items-center flex-col">
               <h3 class="text-lg font-bold text-[#333]">
@@ -41,18 +45,26 @@
               </p>
             </div>
           </div>
+          </router-link>
         </div>
       </div>
     </div>
   </div>
+  <div id='pagination' class='flex justify-evenly'>
+  <div v-for='page in pages' :key='page'>
+    <button @click=goToPage(page)>
+      {{ page }}
+    </button>
+  </div>
+</div>
 </template>
 
 
 
 <script setup>
 // import Product1 from "@/assets/product_photo_i_want_you.jpeg";
-import {  onMounted } from "vue";
-import Products from "../api/products";
+import {  onMounted,computed } from "vue";
+import Products from "../../api/products";
 
 const {
   state,
@@ -61,13 +73,13 @@ const {
 console.log(state.value.products);
 // const category = null;
 // const { userCred } = User();
-// const pages = computed(() => state.value.pages || 0);
-// const skip = computed(() => state.value.skip || 0);
-// const limit = computed(() => state.value.limit || 9);
-// const goToPage = async (page) => {
-//   state.value.skip = (page - 1) * limit.value;
-//   await fetchProducts(limit, skip);
-// };
+const pages = computed(() => state.value.pages || 0);
+const skip = computed(() => state.value.skip || 0);
+const limit = computed(() => state.value.limit || 9);
+const goToPage = async (page) => {
+  state.value.skip = (page - 1) * limit.value;
+  await fetchProducts(limit, skip);
+};
 onMounted(async () => {
   await fetchProducts(); //Add limit and skip as the parameters
 });

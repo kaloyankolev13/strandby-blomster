@@ -22,13 +22,17 @@ const routes = [
     path: '/products',
     name: 'products',
     component: () =>
-      import(/* webpackChunkName: "products" */ '../views/ProductsView.vue'),
+      import(
+        /* webpackChunkName: "products" */ '../views/Products/ProductsView.vue'
+      ),
   },
   {
     path: '/products/:id',
     name: 'product',
     component: () =>
-      import(/* webpackChunkName: "product" */ '../views/ProductView.vue'),
+      import(
+        /* webpackChunkName: "product" */ '../views/Products/ProductView.vue'
+      ),
   },
   {
     path: '/help',
