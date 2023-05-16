@@ -47,6 +47,20 @@
           </div>
           </router-link>
         </div>
+        <!-- <div
+          v-if='userCred.token'
+          id='admin-buttons'
+          class='flex justify-between mt-5'>
+          <router-link
+          class="
+          btn-dark
+          "
+          :to="{ name: 'admin-edit', params: { id: product._id } }"
+        >
+          Edit
+        </router-link>
+        </div> -->
+
       </div>
     </div>
   </div>
@@ -65,6 +79,7 @@
 // import Product1 from "@/assets/product_photo_i_want_you.jpeg";
 import {  onMounted,computed } from "vue";
 import Products from "../../api/products";
+// import User from "../../api/user";
 
 const {
   state,

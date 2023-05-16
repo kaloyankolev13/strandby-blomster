@@ -6,7 +6,7 @@ const state = ref({
   product: {},
   products: [],
   message: '',
-  limit: 3,
+  limit: 6,
 });
 const Products = () => {
   // Gets all the products from the database

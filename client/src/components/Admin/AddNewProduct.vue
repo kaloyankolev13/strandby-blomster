@@ -9,17 +9,17 @@
         <div class="sm:col-span-2">
           <label for="name"  class="block text-sm font-semibold leading-6 text-gray-900">Name</label>
           <div class="mt-2.5">
-            <input type="text" name="name" id="name" autocomplete="name" v-model='newProduct.name' class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+            <input type="text" name="name" id="name" autocomplete="name" placeholder='Product Name' v-model='newProduct.name' class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
           </div>
         </div>
         <div class="sm:col-span-2">
           <label for="price"  class="block text-sm font-semibold leading-6 text-gray-900">Price</label>
           <div class="mt-2.5">
-            <input v-model='newProduct.price' type="number" name="price" id="price" autocomplete="price" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+            <input v-model='newProduct.price' type="number" name="price" placeholder='Product Price' id="price" autocomplete="price" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
           </div>
         </div>
         <div class="mb-6 pt-4 sm:grid-cols-1">
-      <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+      <label class="mb-5 block text-sm font-semibold text-[#07074D]">
         Upload File
       </label>
 
@@ -51,14 +51,14 @@
         <div class="sm:col-span-2">
           <label for="description"  class="block text-sm font-semibold leading-6 text-gray-900">Description</label>
           <div class="mt-2.5">
-            <textarea name="description" id="description" v-model='newProduct.description' rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+            <textarea name="description" id="description" v-model='newProduct.description' placeholder='Product Description' rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
           </div>
         </div>
         
       </div>
-      <label for="category" class="block my-3 text-sm font-semibold leading-6 text-gray-9000">Select an option</label>
-      <select id="category" v-model='newProduct.category' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-accent focus:border-accent block w-full p-2.5 ">
-        <option selected>Select a category</option>
+      <label for="category" class="block my-3 text-sm font-semibold leading-6 ">Select an option</label>
+      <select id="category" v-model='newProduct.category' class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-accent focus:border-accent block w-full p-2.5 ">
+        <option selected >  Select a category </option>
         <option value="special">Special</option>
         <option value="limited">Limited</option>
         <option value="bestseller">Bestseller</option>
@@ -84,7 +84,7 @@ export default {
     // Initialize the data object for the new product
     const newProduct = ref({
       name: '',
-      price: 0,
+      price: null,
       description: '',
       category: 'Select a category',
 

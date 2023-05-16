@@ -50,6 +50,15 @@ const routes = [
     },
   },
   {
+    path: '/admin/:id',
+    name: 'admin-product',
+    props: true,
+    component: () =>
+      import(
+        /* webpackChunkName: "admin-product" */ '../views/Admin/AdminEditView.vue'
+      ),
+  },
+  {
     path: '/admin/login',
     name: 'login',
     component: () =>
