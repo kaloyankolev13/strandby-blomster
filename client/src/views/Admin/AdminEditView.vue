@@ -43,8 +43,8 @@
             </div>
           </label>
         <!-- Display the URL and image preview of uploaded image(s) -->
-      <div v-for='img in url' :key='img'>
-        <img  :src="img" alt="" class='w-[300px]'>
+      <div v-for='img in state.product.images' :key='img'>
+        <img  :src="img.url" alt="" class='w-[300px]'>
     </div>
       </div>
           <div class="sm:col-span-2">
@@ -108,7 +108,7 @@ export default{
       newImages.value.images = files;
       // eslint-disable-next-line no-underscore-dangle
     };
-
+    console.log(url.value);
     // const resetForm = () => {
     //   newProduct.value.name = '';
     //   newProduct.value.price = '';
