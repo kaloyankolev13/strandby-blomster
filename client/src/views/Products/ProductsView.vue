@@ -33,7 +33,7 @@
             <div class="flex items-center flex-col">
               <h3 class="text-lg font-bold text-[#333]">
                 <a :href="product.href">
-                  <span aria-hidden="true" class="absolute inset-0" />
+                  <span aria-hidden="true" class=" inset-0" />
                   {{ product.name }}
                 </a>
               </h3>
@@ -45,21 +45,30 @@
               </p>
             </div>
           </div>
+          <div
+        v-if='userCred.token'
+        id='admin-buttons'
+        class='flex justify-between mt-5'>
+        <router-link
+        class="
+        btn-dark
+        "
+        :to="{ name: 'admin-edit', params: { id: product._id } }"
+      >
+        Edit</router-link
+      >
+      <button
+        class="
+         btn-dark
+        "
+        @click="deleteProduct(product._id)"
+      >
+        Delete
+      </button>
+    </div>
           </router-link>
         </div>
-        <!-- <div
-          v-if='userCred.token'
-          id='admin-buttons'
-          class='flex justify-between mt-5'>
-          <router-link
-          class="
-          btn-dark
-          "
-          :to="{ name: 'admin-edit', params: { id: product._id } }"
-        >
-          Edit
-        </router-link>
-        </div> -->
+        
 
       </div>
     </div>
@@ -79,7 +88,7 @@
 // import Product1 from "@/assets/product_photo_i_want_you.jpeg";
 import {  onMounted,computed } from "vue";
 import Products from "../../api/products";
-// import User from "../../api/user";
+import User from "../../api/user";
 
 const {
   state,
@@ -87,7 +96,7 @@ const {
 } = Products();
 console.log(state.value.products);
 // const category = null;
-// const { userCred } = User();
+const { userCred } = User();
 const pages = computed(() => state.value.pages || 0);
 const skip = computed(() => state.value.skip || 0);
 const limit = computed(() => state.value.limit || 9);

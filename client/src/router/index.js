@@ -51,7 +51,7 @@ const routes = [
   },
   {
     path: '/admin/:id',
-    name: 'admin-product',
+    name: 'admin-edit',
     props: true,
     component: () =>
       import(
