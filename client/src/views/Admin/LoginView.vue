@@ -26,8 +26,8 @@
         id="password"
         placeholder="password">
     </div>
-    <div class="flex items-center justify-between">
-      <button class="btn-dark" type='button' @click='sendAdmin(userCred)'>
+    <div class="flex items-center justify-center">
+      <button class='btn-dark rounded-md text-lg' type='button' @click='sendAdmin(userCred)'>
         Log In
       </button>
     </div>

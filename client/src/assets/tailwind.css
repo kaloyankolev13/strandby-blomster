@@ -11,14 +11,18 @@
 }
 
 .btn-dark {
-  background-color: #becca5;
+  background-color: #5d713b;
+  color: white;
   padding: 5px 20px;
   font-weight: 600;
   /* Border */
-  border: 1px solid black;
 }
 
 .btn-light:hover {
+  background-color: #5d713b;
+}
+
+.btn-dark:hover {
   background-color: #becca5;
 }
 
