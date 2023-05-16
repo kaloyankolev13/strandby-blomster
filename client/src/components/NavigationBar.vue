@@ -26,9 +26,11 @@
           class="text-sm font-semibold leading-6 text-gray-900"
           >{{ item.name }}</router-link
         >
-        <a href="/admin/login" class="text-sm font-semibold leading-6 text-gray-900"
+        <a href="/admin/login" v-if='!userCred.token' class="text-sm font-semibold leading-6 text-gray-900"
           >Log in <span aria-hidden="true">&rarr;</span></a
         >
+      <button type='button' class='text-sm font-semibold leading-6 text-gray-900' @click='logOut' v-if='userCred.token'>Log Out</button>
+
       </div>
     </nav>
     <Dialog
@@ -72,6 +74,8 @@
                 class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >Log in</router-link
               >
+      <button type='button' @click='logOut' v-if='userCred.token'>Log OUT</button>
+
             </div>
           </div>
         </div>
@@ -84,6 +88,9 @@
 import { ref } from "vue";
 import { Dialog, DialogPanel } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
+import User from '../api/user';
+
+const {logOut, userCred} = User();
 
 const navigation = [
   { name: "About Us", href: "/about" },
