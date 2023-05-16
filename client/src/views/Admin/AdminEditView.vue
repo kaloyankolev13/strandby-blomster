@@ -43,8 +43,15 @@
             </div>
           </label>
         <!-- Display the URL and image preview of uploaded image(s) -->
-      <div v-for='img in state.product.images' :key='img'>
-        <img  :src="img.url" alt="" class='w-[300px]'>
+        <div class='grid grid-cols-3'>
+          <div v-for='img in state.product.images' class='' :key='img'>
+            <img  :src="img.url" alt="" class=''>
+            <p>{{ state.product.images.length }}</p>
+          </div>
+          <div v-for='img in url' class='' :key='img'>
+            <img  :src="img" alt="" >
+            <p>{{ img }}</p>
+          </div>
     </div>
       </div>
           <div class="sm:col-span-2">
