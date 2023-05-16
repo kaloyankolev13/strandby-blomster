@@ -1,8 +1,6 @@
 <template>
     <div>
-      <h1>Admin Page</h1>
       <NewProduct/>
-  
     </div>
   </template>
   
