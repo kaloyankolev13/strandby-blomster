@@ -29,7 +29,7 @@
         <a href="/admin/login" v-if='!userCred.token' class="text-sm font-semibold leading-6 text-gray-900"
           >Log in <span aria-hidden="true">&rarr;</span></a
         >
-      <button type='button' class='text-sm font-semibold leading-6 text-gray-900' @click='logOut' v-if='userCred.token'>Log Out</button>
+      <button type='button' class='text-sm font-semibold leading-6 text-gray-900' @click='logOut' v-if='userCred.token'>Log out <span>&larr;</span></button>
 
       </div>
     </nav>
@@ -71,10 +71,11 @@
             <div class="py-6">
               <router-link
                 to="/admin/login"
+                v-if='!userCred.token'
                 class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >Log in</router-link
               >
-      <button type='button' @click='logOut' v-if='userCred.token'>Log OUT</button>
+              <button type='button' class='-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50' @click='logOut' v-if='userCred.token'>Log out</button>
 
             </div>
           </div>
