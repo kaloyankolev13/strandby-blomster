@@ -63,9 +63,9 @@
                   <h3 class="sr-only">Categories</h3>
                   <ul role="list" class="px-2 py-3 font-medium text-gray-900">
                     <li v-for="category in subCategories" :key="category.name">
-                      <a :href="category.href" class="block px-2 py-3">{{
+                      <button type='button'  @click='categoriseProduct(category.value)' class="block px-2 py-3">{{
                         category.name
-                      }}</a>
+                      }}</button>
                     </li>
                   </ul>
 
@@ -214,7 +214,9 @@
                 class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
               >
                 <li v-for="category in subCategories" :key="category.name">
-                  <a :href="category.href">{{ category.name }}</a>
+                  <button type='button'  @click='categoriseProduct(category.value)' class="block px-2 py-3">{{
+                        category.name
+                      }}</button>
                 </li>
               </ul>
 
@@ -257,8 +259,9 @@
                         :checked="option.checked"
                         class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                       />
+                      <p>{{ option.checked }}</p>
                       <label
-                        :for="filter-section.id-optionIdx"
+                        :for="section.id"
                         class="ml-3 text-sm text-gray-600"
                         >{{ option.label }}</label
                       >
@@ -271,7 +274,7 @@
             <!-- Product grid -->
             <div class="lg:col-span-3">
               <!-- Your content -->
-              <Products />
+              <ProductsComponent />
             </div>
           </div>
         </section>
@@ -281,7 +284,8 @@
 
 <script setup>
 import { ref } from "vue";
-import Products from "@/components/ProductsComponent.vue";
+import ProductsComponent from "@/components/ProductsComponent.vue";
+import Products from "@/api/products";
 import {
   Dialog,
   DialogPanel,
@@ -304,6 +308,8 @@ import {
   Squares2X2Icon,
 } from "@heroicons/vue/20/solid";
 
+let { categoriseProduct } = Products();
+
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
   { name: "Best Rating", href: "#", current: false },
@@ -312,13 +318,11 @@ const sortOptions = [
   { name: "Price: High to Low", href: "#", current: false },
 ];
 const subCategories = [
-  { name: "Totes", href: "#" },
-  { name: "Backpacks", href: "#" },
-  { name: "Travel Bags", href: "#" },
-  { name: "Hip Bags", href: "#" },
-  { name: "Laptop Sleeves", href: "#" },
+  { name: "Limited",value:'limited' },
+  { name: "Speical",value:'special' },
+  { name: "Bestseller", value:'bestseller' },
 ];
-const filters = [
+const filters = ref([
   {
     id: "color",
     name: "Color",
@@ -354,7 +358,7 @@ const filters = [
       { value: "40l", label: "40L", checked: true },
     ],
   },
-];
+]);
 
 const mobileFiltersOpen = ref(false);
 </script>
