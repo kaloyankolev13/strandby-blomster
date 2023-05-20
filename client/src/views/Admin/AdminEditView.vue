@@ -46,7 +46,6 @@
         <div class='grid grid-cols-3'>
           <div v-for='img in state.product.images' class='' :key='img'>
             <img  :src="img.url" alt="" class=''>
-            <p>{{ state.product.images.length }}</p>
           </div>
           <div v-for='img in url' class='' :key='img'>
             <img  :src="img" alt="" >
@@ -105,25 +104,15 @@ export default{
       event.preventDefault();
       const { files } = event.target;
       // Loop through the uploaded files and display the URL and preview image for each
-      // eslint-disable-next-line no-restricted-syntax
       for (const file of files) {
         const link = URL.createObjectURL(file);
         url.value.push(link);
       }
+      console.log(url.value);
+      console.log(url.value[0], 'url valueß');
       // Add the uploaded image(s) to the new product object
-      state.value.product.images.push(url.value);
       newImages.value.images = files;
-      // eslint-disable-next-line no-underscore-dangle
     };
-    console.log(url.value);
-    // const resetForm = () => {
-    //   newProduct.value.name = '';
-    //   newProduct.value.price = '';
-    //   newProduct.value.description = '';
-    //   newProduct.value.images = [];
-    //   // url.value = [];
-    // };
-
     const submitForm = () => {
       updateProduct(newImages, props.id);
     };
