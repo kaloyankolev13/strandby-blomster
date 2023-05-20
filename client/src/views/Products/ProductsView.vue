@@ -365,10 +365,7 @@ const mobileFiltersOpen = ref(false);
 let choices = ref([]);
 watch(filters.value, (category) => {
   choices.value = [];
-  // console.log('New value:', val);
-  // Rest of your code here
   category.forEach((element) => {
-    // console.log(element.id,element.options);
     for (let index = 0; index < element.options.length; index++) {
       const element1 = element.options[index];
       if(element1.checked){
