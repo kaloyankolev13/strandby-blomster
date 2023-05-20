@@ -49,7 +49,6 @@
           </div>
           <div v-for='img in url' class='' :key='img'>
             <img  :src="img" alt="" >
-            <p>{{ img }}</p>
           </div>
     </div>
       </div>
