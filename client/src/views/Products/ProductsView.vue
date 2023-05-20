@@ -273,7 +273,7 @@
             <!-- Product grid -->
             <div class="lg:col-span-3">
               <!-- Your content -->
-              <ProductsComponent />
+              <ProductsComponent :choices = choices />
             </div>
           </div>
         </section>
@@ -282,7 +282,7 @@
 </template>
 
 <script setup>
-import { ref,watch } from "vue";
+import { ref,watch} from "vue";
 import ProductsComponent from "@/components/ProductsComponent.vue";
 import Products from "@/api/products";
 import {
@@ -360,7 +360,7 @@ const filters = ref([
 ]);
 
 const mobileFiltersOpen = ref(false);
-
+ 
 
 let choices = ref([]);
 watch(filters.value, (category) => {
@@ -376,7 +376,6 @@ watch(filters.value, (category) => {
       }
     }
   });
-  console.log(choices.value);
 });
 
 </script>

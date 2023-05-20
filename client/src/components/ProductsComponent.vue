@@ -25,7 +25,9 @@
               <img v-else class='w-52 mb-12' :src=product.images[0].url alt="">
           
             </div>
-  
+
+            <p>{{ choices }}</p>
+
             <div class="flex p-3 flex-col items-center">
               <div class="flex items-center flex-col">
                 <h3 class="text-lg font-bold text-[#333]">
@@ -83,14 +85,26 @@
   
   <script setup>
   // import Product1 from "@/assets/product_photo_i_want_you.jpeg";
-  import {  onMounted,computed } from "vue";
+  import {  onMounted,computed, defineProps } from "vue";
   import Products from "@/api/products";
   import User from "@/api/user";
   
+  // geto prop choices
+  const choices = defineProps({  
+    choices: {
+      type:Array,
+      required: true,
+    },
+  });
+
+  
+
+
   const {
     state,
     fetchProducts, // deleteProduct, categoriseProduct,
   } = Products();
+
   // const category = null;
   const { userCred } = User();
   const pages = computed(() => state.value.pages || 0);
@@ -101,7 +115,7 @@
     await fetchProducts(limit, skip);
   };
   onMounted(async () => {
-    await fetchProducts(); //Add limit and skip as the parameters
+    await fetchProducts(limit,skip); //Add limit and skip as the parameters
   });
   
   
