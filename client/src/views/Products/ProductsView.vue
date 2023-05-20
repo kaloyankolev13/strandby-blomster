@@ -105,7 +105,6 @@
                           class="flex items-center"
                         >
                           <input
-                            :id="filter-mobile-section.id-optionIdx"
                             :name="section.id"
                             :value="option.value"
                             type="checkbox"
@@ -113,7 +112,6 @@
                             class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                           />
                           <label
-                            :for="filter-mobile-section.id-optionIdx"
                             class="ml-3 min-w-0 flex-1 text-gray-500"
                             >{{ option.label }}</label
                           >
@@ -252,11 +250,12 @@
                       class="flex items-center"
                     >
                       <input
-                        :id="filter-section.id-optionIdx"
+                        
                         :name="section.id"
                         :value="option.value"
                         type="checkbox"
                         :checked="option.checked"
+                        @click='option.checked = !option.checked'
                         class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                       />
                       <p>{{ option.checked }}</p>
@@ -283,7 +282,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref,watch } from "vue";
 import ProductsComponent from "@/components/ProductsComponent.vue";
 import Products from "@/api/products";
 import {
@@ -361,4 +360,23 @@ const filters = ref([
 ]);
 
 const mobileFiltersOpen = ref(false);
+
+
+let choices = ref([]);
+watch(filters.value, (category) => {
+  choices.value = [];
+  // console.log('New value:', val);
+  // Rest of your code here
+  category.forEach((element) => {
+    // console.log(element.id,element.options);
+    for (let index = 0; index < element.options.length; index++) {
+      const element1 = element.options[index];
+      if(element1.checked){
+        choices.value.push(element1.value);
+      }
+    }
+  });
+  console.log(choices.value);
+});
+
 </script>

@@ -91,7 +91,6 @@
     state,
     fetchProducts, // deleteProduct, categoriseProduct,
   } = Products();
-  console.log(state.value.products);
   // const category = null;
   const { userCred } = User();
   const pages = computed(() => state.value.pages || 0);

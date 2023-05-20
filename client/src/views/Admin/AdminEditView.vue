@@ -68,7 +68,7 @@
           <option value="bestseller">Bestseller</option>
         </select>
         <div class="mt-10">
-          <button type="button" @click='submitForm()' class="block w-full rounded-md bg-accent px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Add new product</button>
+          <button type="button" @click='submitForm()' class="block w-full rounded-md bg-accent px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Edit product</button>
         </div>
   
       </form>
@@ -78,7 +78,7 @@
   </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, } from 'vue';
 import Products from '../../api/products';
 
 // Import the function to add a new product from the products API
