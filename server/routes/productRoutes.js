@@ -4,37 +4,39 @@ const Product = require('../models/product'); // Importing Product model
 const { isLoggedIn } = require('../middleware'); // Importing middleware
 const catchAsync = require('../utils/catchAsync');
 const multer = require('multer');
-const { cloudinary ,storage } = require('../cloudinary');
+const { cloudinary, storage } = require('../cloudinary');
 // Need to continue to work on the mail server
-const email = require('../emailBuilder')
+const email = require('../emailBuilder');
 const upload = multer({ storage });
 
 // console.log(cloudinary.image("BulgarianLegacy/b0qxzp5slttwhhl5harm.png"));
-
 
 // Route for fetching all products
 router.get(
   '/',
   catchAsync(async (req, res) => {
-    let { skip, limit } = req.query
+    let { skip, limit } = req.query;
     if (!skip) {
-      skip = 0
+      skip = 0;
     }
     if (!limit) {
-      limit = 9
+      limit = 9;
     }
-    skip = parseInt(skip)
-    limit = parseInt(limit)
-    // email()
-    
-    const products = await Product.aggregate([{ $skip: skip }, { $limit: limit } ]); // Fetching all products
+    skip = parseInt(skip);
+    limit = parseInt(limit);
+    // email('Hello from blomster');
+
+    const products = await Product.aggregate([
+      { $skip: skip },
+      { $limit: limit },
+    ]); // Fetching all products
 
     const result = {
       total: await Product.count(),
       skip,
       limit,
-      products
-    }
+      products,
+    };
     res.json(result); // Sending response as JSON
   })
 );
@@ -42,9 +44,9 @@ router.get(
 router.post(
   '/category',
   catchAsync(async (req, res) => {
-    const category = req.body.category
-    const filteredProducts = await Product.find({category});
-    res.json(filteredProducts)
+    const category = req.body.category;
+    const filteredProducts = await Product.find({ category });
+    res.json(filteredProducts);
   })
 );
 
@@ -91,7 +93,11 @@ router.patch(
       url: f.path,
       filename: f.filename,
     }));
-    await Product.findByIdAndUpdate(id, { $push: { images: product.images } }, { new: false }); // Updating the product in the database
+    await Product.findByIdAndUpdate(
+      id,
+      { $push: { images: product.images } },
+      { new: false }
+    ); // Updating the product in the database
     res.json({ status: 'Product updated' }); // Sending response as JSON
   })
 );
