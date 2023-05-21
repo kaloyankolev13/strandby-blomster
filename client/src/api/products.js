@@ -7,27 +7,68 @@ const state = ref({
   products: [],
   message: '',
   limit: 6,
+  skip: 0,
 });
 const Products = () => {
   // Gets all the products from the database
+  // const fetchProducts = async (limit, skip) => {
+  //   let url = '/products';
+  //   let category = 'limited';
+  //   if (category) {
+  //     url += `?category=${category.value}`;
+  //   }
+  //   if (limit) {
+  //     url += `?limit=${limit.value}`;
+  //   } else {
+  //     // If no limit is passed fallback to default value
+  //     url += `?limit=${state.value.limit}`;
+  //   }
+  //   if (skip) {
+  //     url += `&skip=${skip.value}`;
+  //   }
+  //   await axiosInstance.get(url).then((res) => {
+  //     // {
+  //     //   total: 10,
+  //     //   skip: 0,
+  //     //   limit: 9,
+  //     //   products: [{}]
+  //     // }
+  //     state.value.products = res.data.products;
+  //     state.value.pages = res.data.total
+  //       ? Math.ceil(res.data.total / res.data.limit)
+  //       : 0;
+  //     state.value.currentPage = res.data.skip
+  //       ? Math.ceil(res.data.skip / res.data.limit) + 1
+  //       : 1;
+  //     state.value.skip = res.data.skip;
+  //     state.value.total = res.data.total;
+  //     return state.value.products;
+  //   });
+  // };
+
   const fetchProducts = async (limit, skip) => {
     let url = '/products';
-    if (limit) {
-      url += `?limit=${limit.value}`;
-    } else {
-      // If no limit is passed fallback to default value
-      url += `?limit=${state.value.limit}`;
+    let category = 'limited';
+
+    if (category) {
+      url += `?category=${category}`;
     }
+
+    if (limit) {
+      url += `&limit=${limit.value}`;
+    } else {
+      // If no limit is passed, fallback to default value
+      url += `&limit=${state.value.limit}`;
+    }
+
     if (skip) {
       url += `&skip=${skip.value}`;
     }
-    await axiosInstance.get(url).then((res) => {
-      // {
-      //   total: 10,
-      //   skip: 0,
-      //   limit: 9,
-      //   products: [{}]
-      // }
+
+    try {
+      const res = await axiosInstance.get(url);
+      console.log(res.data);
+      // console.log(res.data);
       state.value.products = res.data.products;
       state.value.pages = res.data.total
         ? Math.ceil(res.data.total / res.data.limit)
@@ -37,8 +78,13 @@ const Products = () => {
         : 1;
       state.value.skip = res.data.skip;
       state.value.total = res.data.total;
+
       return state.value.products;
-    });
+    } catch (error) {
+      // Handle error here
+      console.error('Error fetching products:', error);
+      throw error;
+    }
   };
 
   const categoriseProduct = async (category) => {

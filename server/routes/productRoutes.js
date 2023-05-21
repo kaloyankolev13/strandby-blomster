@@ -15,7 +15,7 @@ const upload = multer({ storage });
 router.get(
   '/',
   catchAsync(async (req, res) => {
-    let { skip, limit } = req.query;
+    let { skip, limit, category } = req.query;
     if (!skip) {
       skip = 0;
     }
@@ -29,6 +29,7 @@ router.get(
     const products = await Product.aggregate([
       { $skip: skip },
       { $limit: limit },
+      { $match: { category: category } },
     ]); // Fetching all products
 
     const result = {
