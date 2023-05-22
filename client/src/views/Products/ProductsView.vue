@@ -63,7 +63,7 @@
                   <h3 class="sr-only">Categories</h3>
                   <ul role="list" class="px-2 py-3 font-medium text-gray-900">
                     <li v-for="category in subCategories" :key="category.name">
-                      <button type='button'  @click='categoriseProduct(category.value)' class="block px-2 py-3">{{
+                      <button type='button'  @click='fetchProducts(category.value)' :category ='category.value' class="block px-2 py-3">{{
                         category.name
                       }}</button>
                     </li>
@@ -212,9 +212,11 @@
                 class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
               >
                 <li v-for="category in subCategories" :key="category.name">
-                  <button type='button'  @click='categoriseProduct(category.value)' class="block px-2 py-3">{{
+                  <button type='button'  @click='fetchProducts( 6,0,category.value)' class="block px-2 py-3">{{
                         category.name
-                      }}</button>
+                      }}
+                      
+                    </button>
                 </li>
               </ul>
 
@@ -273,7 +275,7 @@
             <!-- Product grid -->
             <div class="lg:col-span-3">
               <!-- Your content -->
-              <ProductsComponent :choices = choices />
+              <ProductsComponent :choices = choices :category = category />
             </div>
           </div>
         </section>
@@ -284,6 +286,9 @@
 <script setup>
 import { ref,watch} from "vue";
 import ProductsComponent from "@/components/ProductsComponent.vue";
+
+let category = ref('');
+
 import Products from "@/api/products";
 import {
   Dialog,
@@ -307,7 +312,8 @@ import {
   Squares2X2Icon,
 } from "@heroicons/vue/20/solid";
 
-let { categoriseProduct } = Products();
+
+let { fetchProducts } = Products();
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -360,7 +366,7 @@ const filters = ref([
 ]);
 
 const mobileFiltersOpen = ref(false);
- 
+
 
 let choices = ref([]);
 watch(filters.value, (category) => {

@@ -25,12 +25,16 @@ router.get(
     skip = parseInt(skip);
     limit = parseInt(limit);
     // email('Hello from blomster');
-
-    const products = await Product.aggregate([
-      { $skip: skip },
-      { $limit: limit },
-      { $match: { category: category } },
-    ]); // Fetching all products
+    let products;
+    if (category === undefined) {
+      products = await Product.aggregate([{ $skip: skip }, { $limit: limit }]);
+    } else {
+      products = await Product.aggregate([
+        { $skip: skip },
+        { $limit: limit },
+        { $match: { category: category } },
+      ]); // Fetching all products
+    }
 
     const result = {
       total: await Product.count(),
