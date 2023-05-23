@@ -12,9 +12,9 @@ let email = (bodyMessage) =>
         email: 'no-reply@strandbyblomster.dk',
         name: 'Strandby Blomster',
       },
-      to: [{ name: 'John Doe', email: 'kaloyan.kolev@hotmail.com' }],
+      to: [{ name: 'John Doe', email: 'dakuzut@getairmail.com' }],
       htmlContent:
-        '<html><body><h1 style="color:red">This is a transactional email {{params.bodyMessage}}</h1></body></html>',
+        '<html><body style="background-color:white"><h1 style="color:red">This is a transactional email {{params.bodyMessage}}</h1></body></html>',
       params: { bodyMessage: bodyMessage },
     })
     .then(
