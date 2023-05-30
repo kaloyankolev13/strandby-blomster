@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
 
 const corsOptions = {
-  origin: 'http://localhost:8080',
+  origin: process.env.VUE_APP_API_URL ,
   credentials: true,
   methods: 'GET,PUT,POST,PATCH,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization',
