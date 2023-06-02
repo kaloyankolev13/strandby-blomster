@@ -41,6 +41,7 @@ router.get('/logout', (req, res) => {
   req.logout(req.user, (err) => {
     // Logging out the user
     if (err) return next(err); // Handling errors
+    res.clearCookie(token, {maxAge:1000*60*60, httpOnly:true}); // Clearing session ID cookie
     res.status(200).json('Logged out'); // Sending 'Logged out' message as JSON response
   });
 });
