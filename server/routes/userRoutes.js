@@ -32,7 +32,7 @@ router.post('/login', (req, res) => {
       // Authenticating the user
       const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET); // Creating a JSON web token
       // Should return { httpOnly: true } when in deployed
-      res.status(200).cookie('token', token,{maxAge:1000*60*60, httpOnly:true}).json('Success'); // Sending token and user data as JSON response
+      res.status(200).cookie('token', token,{maxAge:1000*60*60, httpOnly:true, sameSite:'None',secure}).json('Success'); // Sending token and user data as JSON response
     });
   });
 });
@@ -41,7 +41,7 @@ router.get('/logout', (req, res) => {
   req.logout(req.user, (err) => {
     // Logging out the user
     if (err) return next(err); // Handling errors
-    res.clearCookie(token, {maxAge:1000*60*60, httpOnly:true}); // Clearing session ID cookie
+    res.clearCookie('token',token, {maxAge:1000*60*60, httpOnly:true, sameSite:'None',secure}); // Clearing session ID cookie
     res.status(200).json('Logged out'); // Sending 'Logged out' message as JSON response
   });
 });
