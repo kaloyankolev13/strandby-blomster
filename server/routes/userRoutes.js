@@ -32,7 +32,7 @@ router.post('/login', (req, res) => {
       // Authenticating the user
       const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET); // Creating a JSON web token
       // Should return { httpOnly: true } when in deployed
-      res.status(200).cookie('token', token,{maxAge:1000*60*60, httpOnly:true, sameSite:'None',domain:'gorgeous-malasada-98352a.netlify.app'}).json('Success'); // Sending token and user data as JSON response
+      res.status(200).cookie('token', token,{maxAge:1000*60*60, httpOnly:true, sameSite:'None',domain:'.onrender.com/'}).json('Success'); // Sending token and user data as JSON response
     });
   });
 });
