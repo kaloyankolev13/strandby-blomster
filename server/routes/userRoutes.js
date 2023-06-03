@@ -5,6 +5,7 @@ const User = require('../models/user'); // Importing User model from '../models/
 const jwt = require('jsonwebtoken');
 
 
+
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
   const user = new User({ username });
@@ -53,6 +54,5 @@ router.get('/logout', (req, res) => {
 
 // Rest of your routes...
 
-module.exports = router;
 
 module.exports = router; // Exporting router for use in other files
