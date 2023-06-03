@@ -9,6 +9,7 @@ const instance = Axios.create({
     'Accept': 'application/json',
   },
   withCredentials: true,
+  credentials: 'include',
 });
 
 // Add an interceptor to transform requests
