@@ -30,7 +30,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', process.env.VUE_APP_API_URL);
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -38,7 +37,7 @@ app.use((req, res, next) => {
 });
 
 const corsOptions = {
-  // origin: process.env.VUE_APP_API_URL ,
+  origin: process.env.VUE_APP_API_URL ,
   credentials: true,
   methods: 'GET,PUT,POST,PATCH,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization',
