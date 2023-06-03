@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 });
 
 const corsOptions = {
-  origin: [ 'https://strandbyblomster.onrender.com' ,process.env.VUE_APP_API_URL] ,
+  origin: [ 'http://localhost:8080' ,process.env.VUE_APP_API_URL] ,
   credentials: true,
   methods: 'GET,PUT,POST,PATCH,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization',
