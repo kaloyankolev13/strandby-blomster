@@ -33,8 +33,8 @@ router.post('/login', (req, res) => {
       // Authenticating the user
       const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET); // Creating a JSON web token
       // Should return { httpOnly: true } when in deployed
-      res.status(200).cookie('token', token,{maxAge:1000*60*60, httpOnly:true}).json('Success')
-      .set({
+      res.status(200).cookie('token', token,{maxAge:1000*60*60, httpOnly:true, sameSite:'None',secure}).json('Success')
+      .res.set({
         'Access-Control-Allow-Origin': 'https://strandbyblomster.onrender.com',
         'Access-Control-Allow-Credentials': true,
 
