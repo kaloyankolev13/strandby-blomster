@@ -4,13 +4,6 @@ const passport = require('passport');
 const User = require('../models/user'); // Importing User model from '../models/user'
 const jwt = require('jsonwebtoken');
 
-router.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://strandbyblomster.onrender.com');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  next();
-});
 
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
