@@ -4,11 +4,18 @@ const passport = require('passport');
 const User = require('../models/user'); // Importing User model from '../models/user'
 const jwt = require('jsonwebtoken');
 
+router.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://strandbyblomster.onrender.com');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
   const user = new User({ username });
   try {
-    const registeredUser = await User.register(user, password); // Registering a new user
     passport.authenticate('local')(req, res, () => {
       // Authenticating the user
       res.cookie('sessionID', req.sessionID, { httpOnly: true }); // Setting session ID cookie
@@ -45,5 +52,14 @@ router.get('/logout', (req, res) => {
     res.status(200).json('Logged out'); // Sending 'Logged out' message as JSON response
   });
 });
+
+
+
+// Add middleware to enable CORS
+
+
+// Rest of your routes...
+
+module.exports = router;
 
 module.exports = router; // Exporting router for use in other files

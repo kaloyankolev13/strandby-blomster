@@ -31,7 +31,7 @@ const corsOptions = {
   origin: process.env.VUE_APP_API_URL ,
   credentials: true,
   methods: 'GET,PUT,POST,PATCH,DELETE,OPTIONS',
-  allowedHeaders: 'Content-Type,Authorization,Access-Control-Allow-Origin',
+  allowedHeaders: 'Content-Type,Authorization',
   maxAge: 3600000,
 };
 
