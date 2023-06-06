@@ -161,7 +161,7 @@
                     </div>
                     <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                     <div class="mt-6">
-                      <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-accent px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary">Checkout</a>
+                      <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-accent px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary" @click='checkout()'>Checkout</a>
                     </div>
                     <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
                       <p>
@@ -189,6 +189,7 @@ import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } fro
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import User from '../api/user';
 import {shoppingCart, removeFromShoppingCart } from "@/js/shoppingCart";
+import axios from "axios";
 const {logOut, userCred} = User();
 
 const total = computed(() => {
@@ -198,7 +199,14 @@ const total = computed(() => {
   }
   return sum;
 });
-  
+
+const checkout =  async function(){
+  const { data:stripeRedirectUrl }  =await axios.post('http://localhost:3000/create-checkout-session', {
+  items: shoppingCart.value
+})
+console.log(stripeRedirectUrl);
+window.location.href = stripeRedirectUrl;
+}
 const navigation = [
   { name: "About Us", href: "/about" },
   { name: "Flowers", href: "/products" },

@@ -9,19 +9,21 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user.js');
 const cookieParser = require('cookie-parser');
+const stripe = require('stripe')('sk_test_51NG6LqAJKHgOUKXAr6qjgTYeJemq48AdkET60qJoQcgGfHCUWzqQZKIoT0jvLdrtx3EEhi7ADc4ujQyJ0O3dwIDX009XabuVG8');
 
 mongoose.set('strictQuery', false);
 
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log(err));
+.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB connected'))
+.catch((err) => console.log(err));
 
 const app = express();
 
+app.use(express.static('public'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -64,6 +66,25 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use('/admin', require('./routes/userRoutes'));
 app.use('/products', require('./routes/productRoutes'));
+app.post('/create-checkout-session', async (req, res) => {
+  const products = req.body.items;
+
+  const line_items = products.map((product) => {
+    return {
+      price: product.stripePriceId,
+      quantity: product.quantity,
+    }
+  });
+  const session = await stripe.checkout.sessions.create({
+    line_items,
+    mode: 'payment',
+    success_url: `http://localhost:8080/success.html`,
+    cancel_url: `http://localhost:8080/products`,
+  });
+
+  res.json( session.url);
+});
+
 
 app.use((err, req, res, next) => {
   const { status = 500, message = 'Something went wrong' } = err;

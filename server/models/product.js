@@ -10,6 +10,10 @@ const productSchema = new Schema({
     type: Number,
     // required: true,
   },
+  stripePriceId:{
+    type:String,
+    required:true,
+  },
   description: {
     type: String,
     // required: true,

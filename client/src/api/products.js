@@ -10,10 +10,12 @@ const state = ref({
   limit: 6,
   skip: 0,
 });
+
 const Products = () => {
   const fetchProducts = async (limit, skip, category) => {
     let url = '/products';
     // console.log(limit);
+    
     if (limit && limit.value) {
       url += `?limit=${limit.value}`;
     } else {
@@ -32,7 +34,7 @@ const Products = () => {
 
     try {
       const res = await axiosInstance.get(url);
-
+      
       state.value.products = res.data.products;
       state.value.pages = res.data.total
         ? Math.ceil(res.data.total / res.data.limit)
@@ -61,14 +63,13 @@ const Products = () => {
 
   // Gets a single product from the database by id
   const fetchOneProduct = async (id) => {
-    await axiosInstance
-      .get(`/products/${id}`)
-      .then((res) => {
-        state.value.product = res.data;
-      })
-      .catch((err) => {
+    const res = await axiosInstance
+      .get(`/products/${id}`).catch((err) => {
         state.value.message = err;
       });
+    
+    state.value.product = res.data;
+        
   };
   // add product form with image with axios
   const config = {

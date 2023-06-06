@@ -20,6 +20,17 @@ instance.interceptors.request.use((config) => {
   return config;
 });
 
+instance.interceptors.response.use((response) => {
+  // trigger 'loading=false' event here
+  const loading = false;
+  return { ...response, loading };
+}, (error) => {
+  // trigger 'loading=false' event here
+  return Promise.reject(error);
+});
+
+
+
 const axiosInstance = instance;
 
 export default axiosInstance;
