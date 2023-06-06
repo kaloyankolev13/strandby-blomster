@@ -13,7 +13,7 @@ const state = ref({
 const Products = () => {
   const fetchProducts = async (limit, skip, category) => {
     let url = '/products';
-    console.log(limit);
+    // console.log(limit);
     if (limit && limit.value) {
       url += `?limit=${limit.value}`;
     } else {
@@ -31,9 +31,7 @@ const Products = () => {
     }
 
     try {
-      console.log(url);
       const res = await axiosInstance.get(url);
-      console.log(res.data);
 
       state.value.products = res.data.products;
       state.value.pages = res.data.total
@@ -55,9 +53,9 @@ const Products = () => {
   };
 
   // This function gets only 5 of the latest products
-  const fetchFiveProducts = async () => {
+  const fetchThreeProducts = async () => {
     const res = await axiosInstance.get('/products');
-    const latestFiveProducts = res.data.reverse().slice(0, 5);
+    const latestFiveProducts = res.data.products.reverse().slice(0, 3);
     state.value.products = latestFiveProducts;
   };
 
@@ -94,9 +92,7 @@ const Products = () => {
     }
     await axiosInstance
       .post('/products', formData, config)
-      .then((res) => {
-        console.log(res.data);
-        console.log(state);
+      .then(() => {
         resetForm();
       })
       .catch((err) => {
@@ -151,7 +147,7 @@ const Products = () => {
     deleteProduct,
     fetchOneProduct,
     updateProduct,
-    fetchFiveProducts,
+    fetchThreeProducts,
   };
 };
 

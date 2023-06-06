@@ -16,18 +16,17 @@
           <router-link
       :to="{ name: 'product', params: { id: product._id } }"
       >
-            <div
-              class="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-b-none rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80"
-            >
-            <div v-if='product.images.length === 0'>
-                <h1>No Image</h1>
-            </div>
-              <img v-else class='w-52 mb-12' :src=product.images[0].url alt="">
+          <div
+          class="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-b-none rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80"
+          >
+          <div v-if='product.images.length === 0'>
+            <h1>No Image</h1>
+          </div>
+          <img v-else class='w-full mb-12' :src=product.images[0].url alt="">
           
-            </div>
-
-            <p>{{ choices }}</p>
-
+        </div>
+      </router-link>  
+            
             <div class="flex p-3 flex-col items-center">
               <div class="flex items-center flex-col">
                 <h3 class="text-lg font-bold text-[#333]">
@@ -40,8 +39,9 @@
                   {{ product.description }}
                 </p>
                 <p class="mt-1 text-sm font-bold text-[#333]">
-                  {{ product.price }}
+                 DKK: {{ product.price }}
                 </p>
+                <button @click='addToShoppingCart(product)'>Add to shopping cart</button>
               </div>
             </div>
             <div
@@ -65,7 +65,7 @@
           Delete
         </button>
       </div>
-            </router-link>
+           
           </div>
           
   
@@ -80,38 +80,17 @@
   
   <script setup>
   import Pagination from "@/components/PaginationComponent.vue";
-  import {   defineProps } from "vue";
+  // import {   defineProps } from "vue";
+  import  {addToShoppingCart } from "@/js/shoppingCart";
   import Products from "@/api/products";
   import User from "@/api/user";
 
-  
-  // geto prop choices
-  const choices = defineProps({  
-    choices: {
-      type:Array,
-      required: true,
-    },
-    category: {
-      type: String,
-      required: true,
-    },
-  });
-
   const { userCred } = User();
 
-
-  
-  
   const {
-    state,
+    state,deleteProduct
   } = Products();
-  
-  console.log(state.value.products);
 
-
-  
-  
-  
   </script>
   
   <style lang="scss" scoped></style>

@@ -17,8 +17,6 @@ const {
     fetchProducts, // deleteProduct, categoriseProduct,
   } = Products();
   
-  console.log(state.value.products);
-
 
   // const category = null;
   const pages = computed(() => state.value.pages || 0);

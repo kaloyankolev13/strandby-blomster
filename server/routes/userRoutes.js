@@ -11,7 +11,7 @@ router.post('/register', async (req, res) => {
     const registeredUser = await User.register(user, password); // Registering a new user
     passport.authenticate('local')(req, res, () => {
       // Authenticating the user
-      res.cookie('sessionID', req.sessionID, { httpOnly: true }); // Setting session ID cookie
+      res.cookie('sessionID', req.sessionID, { httpOnly: false }); // Setting session ID cookie
       res.status(200).json(user); // Sending user data as JSON response
     });
   } catch (err) {
@@ -32,7 +32,9 @@ router.post('/login', (req, res) => {
       // Authenticating the user
       const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET); // Creating a JSON web token
       // Should return { httpOnly: true } when in deployed
-      res.status(200).cookie('token', token,{maxAge:1000*60*60}).json('Success'); // Sending token and user data as JSON response
+      res.status(200).cookie('token', token,{maxAge:1000*60*60,httpOnly:false, sameSite:'None',secure:true}).json('Success');
+      
+         // Sending token and user data as JSON response
     });
   });
 });
