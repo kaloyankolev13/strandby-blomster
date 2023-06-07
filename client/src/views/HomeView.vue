@@ -18,7 +18,7 @@
           </div>
 
           <div class="flex flex-col gap-2">
-            <h2 class="text-5xl">We love our customers</h2>
+            <h2 class="text-5xl font-holispay">We love our customers</h2>
             <a href="#" class="underline">See the reviews here</a>
           </div>
         </div>

@@ -1,7 +1,9 @@
 <template>
+  <div class='font-helvetica'>
   <NavigationBar />
   <router-view />
   <FooterBar />
+</div>
 </template>
 
 <script setup>

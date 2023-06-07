@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Helvetica";
+  src: url('./fonts/helvetica-neue-medium.otf');
+}
+
+@font-face {
+  font-family: "Holispay";
+  src: url('./fonts/holispay.otf');
+}
+
 .btn-light {
   background-color: white;
   padding: 5px 20px;

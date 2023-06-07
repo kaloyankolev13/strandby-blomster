@@ -23,7 +23,7 @@
           v-for="item in navigation"
           :key="item.name"
           :to="item.href"
-          class="text-sm font-semibold leading-6 text-gray-900"
+          class=" font-semibold leading-6 text-gray-900"
           >{{ item.name }}</router-link
         >
         <a href="/admin/login" v-if='!userCred.token' class="text-sm font-semibold leading-6 text-gray-900"

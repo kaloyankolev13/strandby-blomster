@@ -23,6 +23,11 @@ module.exports = {
       scale: {
         175: '1.75',
       },
+      fontFamily:{
+        'holispay': ['Holispay', 'sans-serif'],
+        'helvetica': ['Helvetica', 'sans-serif'],
+
+      }
     },
   },
   corePlugins: {
