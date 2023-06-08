@@ -28,7 +28,7 @@
             
             <div class="flex p-3 flex-col items-center">
               <div class="flex items-center flex-col">
-                <h3 class="text-lg font-bold text-[#333]">
+                <h3  class="text-lg font-holispay font-bold text-[#333]">
                   <a :href="product.href">
                     <span aria-hidden="true" class=" inset-0" />
                     {{ product.name }}
