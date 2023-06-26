@@ -10,6 +10,8 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user.js');
 const cookieParser = require('cookie-parser');
 
+
+
 mongoose.set('strictQuery', false);
 
 mongoose
@@ -27,8 +29,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 const corsOptions = {
-  origin: 'http://localhost:8080',
+  origin: [ 'http://localhost:8080' ,process.env.VUE_APP_API_URL] ,
   credentials: true,
   methods: 'GET,PUT,POST,PATCH,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization',
@@ -45,6 +54,8 @@ app.use(
     cookie: {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+      sameSite: 'None',
+      secure: true,
     },
   })
 );

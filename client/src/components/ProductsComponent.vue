@@ -26,7 +26,7 @@
           
             </div>
 
-            <p>{{ choices }}</p>
+            <!-- <p>{{ choices }}</p> -->
 
             <div class="flex p-3 flex-col items-center">
               <div class="flex items-center flex-col">
@@ -72,7 +72,7 @@
         </div>
       </div>
     </div>
-    <p>{{ state.category }}</p>
+    <!-- <p>{{ state.category }}</p> -->
     <Pagination/>
   </template>
   
@@ -80,22 +80,22 @@
   
   <script setup>
   import Pagination from "@/components/PaginationComponent.vue";
-  import {   defineProps } from "vue";
+  // import {defineProps } from "vue";
   import Products from "@/api/products";
   import User from "@/api/user";
 
   
   // geto prop choices
-  const choices = defineProps({  
-    choices: {
-      type:Array,
-      required: true,
-    },
-    category: {
-      type: String,
-      required: true,
-    },
-  });
+  // const choices = defineProps({  
+  //   choices: {
+  //     type:Array,
+  //     required: true,
+  //   },
+  //   category: {
+  //     type: String,
+  //     required: true,
+  //   },
+  // });
 
   const { userCred } = User();
 

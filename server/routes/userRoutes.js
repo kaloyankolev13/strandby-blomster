@@ -4,11 +4,12 @@ const passport = require('passport');
 const User = require('../models/user'); // Importing User model from '../models/user'
 const jwt = require('jsonwebtoken');
 
+
+
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
   const user = new User({ username });
   try {
-    const registeredUser = await User.register(user, password); // Registering a new user
     passport.authenticate('local')(req, res, () => {
       // Authenticating the user
       res.cookie('sessionID', req.sessionID, { httpOnly: true }); // Setting session ID cookie
@@ -32,7 +33,9 @@ router.post('/login', (req, res) => {
       // Authenticating the user
       const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET); // Creating a JSON web token
       // Should return { httpOnly: true } when in deployed
-      res.status(200).cookie('token', token,{maxAge:1000*60*60}).json('Success'); // Sending token and user data as JSON response
+      res.status(200).cookie('token', token,{maxAge:1000*60*60,httpOnly:true, sameSite:'None',secure:true}).json('Success');
+      
+         // Sending token and user data as JSON response
     });
   });
 });
@@ -41,8 +44,17 @@ router.get('/logout', (req, res) => {
   req.logout(req.user, (err) => {
     // Logging out the user
     if (err) return next(err); // Handling errors
+    res.clearCookie('token',token, {maxAge:1000*60*60, httpOnly:true, sameSite:'None',secure:true}); // Clearing session ID cookie
     res.status(200).json('Logged out'); // Sending 'Logged out' message as JSON response
   });
 });
+
+
+
+// Add middleware to enable CORS
+
+
+// Rest of your routes...
+
 
 module.exports = router; // Exporting router for use in other files

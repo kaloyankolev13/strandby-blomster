@@ -13,7 +13,6 @@ const state = ref({
 const Products = () => {
   const fetchProducts = async (limit, skip, category) => {
     let url = '/products';
-    console.log(limit);
     if (limit && limit.value) {
       url += `?limit=${limit.value}`;
     } else {
@@ -31,9 +30,7 @@ const Products = () => {
     }
 
     try {
-      console.log(url);
       const res = await axiosInstance.get(url);
-      console.log(res.data);
 
       state.value.products = res.data.products;
       state.value.pages = res.data.total
@@ -96,7 +93,6 @@ const Products = () => {
       .post('/products', formData, config)
       .then((res) => {
         console.log(res.data);
-        console.log(state);
         resetForm();
       })
       .catch((err) => {

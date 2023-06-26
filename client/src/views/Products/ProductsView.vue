@@ -131,7 +131,7 @@
           class="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24"
         >
           <h1 class="text-4xl font-bold tracking-tight text-gray-900">
-            New Arrivals
+            All Products
           </h1>
 
           <div class="flex items-center">
@@ -260,7 +260,7 @@
                         @click='option.checked = !option.checked'
                         class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                       />
-                      <p>{{ option.checked }}</p>
+                      <!-- <p>{{ option.checked }}</p> -->
                       <label
                         :for="section.id"
                         class="ml-3 text-sm text-gray-600"
