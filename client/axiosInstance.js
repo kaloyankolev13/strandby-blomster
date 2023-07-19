@@ -1,13 +1,15 @@
 import Axios from 'axios';
 
 const instance = Axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'https://cms-flower.onrender.com',
   responseType: 'json',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
+    'Accept': 'application/json',
   },
   withCredentials: true,
+  credentials: 'include',
 });
 
 // Add an interceptor to transform requests
